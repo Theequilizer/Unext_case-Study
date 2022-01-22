@@ -1,0 +1,111 @@
+package userInput;
+import java.util.*;
+class Person{
+	private String name;
+	private String dateOfbirth;
+	private String gender;
+	private String mobilenumber;
+	private String bloodgroup;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDateOfbirth() {
+		return dateOfbirth;
+	}
+	public void setDateOfbirth(String dateOfbirth) {
+		this.dateOfbirth = dateOfbirth;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getMobilenumber() {
+		return mobilenumber;
+	}
+	public void setMobilenumber(String mobilenumber) {
+		this.mobilenumber = mobilenumber;
+	}
+	public String getBloodgroup() {
+		return bloodgroup;
+	}
+	public void setBloodgroup(String bloodgroup) {
+		this.bloodgroup = bloodgroup;
+	}
+	
+	
+}
+class Donor extends Person{
+	private String bloodbankname;
+	private String donortype;
+	private String donationdate;
+	public String getBloodbankname() {
+		return bloodbankname;
+	}
+	public void setBloodbankname(String bloodbankname) {
+		this.bloodbankname = bloodbankname;
+	}
+	public String getDonortype() {
+		return donortype;
+	}
+	public void setDonortype(String donortype) {
+		this.donortype = donortype;
+	}
+	public String getDonationdate() {
+		return donationdate;
+	}
+	public void setDonationdate(String donationdate) {
+		this.donationdate = donationdate;
+	}
+	public void displaydonationdetails() {
+		System.out.println("Donation details:");
+		System.out.println("Name:"+getName());
+		System.out.println("Date Of Birth :"+getDateOfbirth());
+		System.out.println("Gender :"+getGender());
+		System.out.println("Mobile Number :"+getMobilenumber());
+		System.out.println("Blood Group :"+getBloodgroup());
+		System.out.println("Blood Bank Name :"+getBloodbankname());
+		System.out.println("Donor Type :"+getDonortype());
+		System.out.println("Donation Date :"+getDonationdate());
+	}
+	
+	
+	}
+public class Dvsdf {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		Donor P = new Donor();
+		System.out.println("Enter the name :");
+		String name = sc.nextLine();
+		P.setName(name);
+		System.out.println("Enter Date of Birth :");
+		String dateofbirth = sc.nextLine();
+		P.setDateOfbirth(dateofbirth);
+		System.out.println("Enter Gender :");
+		String gender  = sc.nextLine();
+		P.setGender(gender);
+		System.out.println("Enter Mobile Number :");
+		String mobilenumber = sc.nextLine();
+		P.setMobilenumber(mobilenumber);
+		System.out.println("Enter Blood Group :");
+		String bloodgroup = sc.nextLine();
+		P.setBloodgroup(bloodgroup);
+		System.out.println("Enter Blood Bank Name :");
+		String bloodBankname = sc.nextLine();
+		P.setBloodbankname(bloodBankname);
+		System.out.println("Enter Donor Type :");
+		String donortype = sc.nextLine();
+		P.setDonortype(donortype);
+		System.out.println("Enter Donation Date :");
+		String donationdate = sc.nextLine();
+		P.setDonationdate(donationdate);
+		P.displaydonationdetails();
+	}
+
+}
