@@ -1,0 +1,136 @@
+package Example;
+import java.sql.*;
+import java.util.*;
+public class Data {
+
+	public static void main(String[] args) throws ClassNotFoundException  {
+		// TODO Auto-generated method stub
+		Connection con =null;
+		Scanner sc = new Scanner(System.in);
+
+		    String url = "jdbc:mysql://localhost:3306/mall";
+		    String username = "root";
+		    String password = "Rohan@17";
+
+		    try {
+		    	
+		      Class.forName("com.mysql.cj.jdbc.Driver");
+		      con = DriverManager.getConnection(url, username, password);
+
+		      System.out.println("Connected!");
+		      Statement stmt = con.createStatement();
+		      
+		      System.out.println("Enter 1 for customer");
+		      System.out.println("Enter 2 for Seller");
+		      int b  = sc.nextInt();
+		      if(b==1) {
+		    	  System.out.println("not valid");
+		      }
+		      if(b==2) {
+		    	  System.out.println("Enter Manufacturer id");
+		    	  int m =sc.nextInt();
+		    	  System.out.println("Selected");
+		    	  System.out.println("Enter operation to perform");
+		    	  System.out.println("1. create product");
+		    	  System.out.println("2. update product");
+		    	  System.out.println("3. delete product");
+		    	  System.out.println("4. view product");
+		    	  int p =sc.nextInt();
+		    	  if(p==1) {
+		    		 
+		    		  System.out.println("Enter details");
+		    		  System.out.println("11111111111111");
+		    		  System.out.println("Enter Code");
+		    		  int c = sc.nextInt();
+		    		  System.out.println("222222222222");
+		    		  System.out.println("Enter Name");
+		    		  String name = sc.next();
+		    		  System.out.println("33333333333");
+		    		  System.out.println("Enter price");
+		    		  int r = sc.nextInt();
+		    		  System.out.println("4444444444");
+		    		  String str1 = "insert into products VALUES("+c+","+"'"+name+"'"+","+r+","+m+");" ;
+		    		  System.out.println(str1);
+		    		  
+		    		  PreparedStatement statement = con.prepareStatement(str1);
+		    		  System.out.println(statement);
+		    		  statement.execute(str1);
+		    		  System.out.println("done");
+		    		  
+		    	  }
+		    	  if(p==2) {
+		    		  System.out.println("Enter details");
+		    		  System.out.println("Enter Code");
+		    		  int c = sc.nextInt();
+		    		  System.out.println("11111111111111");
+		    		  System.out.println("222222222222");
+		    		  System.out.println("Enter Name");
+		    		  String name = sc.next();
+		    		  System.out.println("33333333333");
+		    		  System.out.println("Enter price");
+		    		  int r = sc.nextInt();
+		    		  System.out.println("4444444444");
+		    		  String str1 = "update products set Name="+"'"+name+"'"+",price="+r+" "+"where Code ="+c+";" ;
+                      System.out.println(str1);
+		    		  
+		    		  PreparedStatement statement = con.prepareStatement(str1);
+		    		  System.out.println(statement);
+		    		  statement.execute(str1);
+		    		  System.out.println("done");
+		    		  String str2 = " select * from products where manufacurer="+m+";";
+                      statement.execute(str2);
+		    		  System.out.println("updated table is: ");
+		    		 		    		  
+		    		  
+		    	  }
+                 if(p==3) {
+                	 System.out.println("Enter details");
+		    		  System.out.println("Enter Code");
+		    		  int c = sc.nextInt();
+		    		  String str1 = "delete from products where code ="+c+";";
+		    		    System.out.println(str1);
+			    		  
+			    		  PreparedStatement statement = con.prepareStatement(str1);
+			    		  System.out.println(statement);
+			    		  statement.execute(str1);
+			    		  System.out.println("done");
+		    		  
+		    	  }
+                 if(p==4) {
+                	 
+		    		  String str1 = "select * from products where manufacturer ="+m+";";
+		    		    System.out.println(str1);
+			    		 
+			    		 PreparedStatement statement = con.prepareStatement(str1);
+			    		
+			    		  ResultSet rs = statement.executeQuery(str1);
+			    		  while (rs.next()) {
+			    			  
+			                  int code = rs.getInt("code");
+			                  String name = rs.getString("name");
+			                  int price = rs.getInt("price");
+			                  System.out.println(code + "\t\t" + name
+			                                     + "\t\t" + price);
+			              }
+	  
+                  }
+                 
+		      }
+		    
+		    }
+		   
+		    catch (SQLException ex) {
+		        throw new Error("Error ", ex);
+		    } finally {
+		      try {
+		        if (con != null) {
+		            con.close();
+		        }
+		      } catch (SQLException ex) {
+		          System.out.println(ex.getMessage());
+		      }
+		    }
+		  }
+
+
+}
